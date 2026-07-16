@@ -1,0 +1,1162 @@
+/* src/styles/global.css */
+
+/* Import Premium Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
+
+/* Variables & Design Tokens */
+:root {
+  --primary-color: #0f172a; /* Soft Deep Slate */
+  --primary-hover: #1e293b;
+  --primary-light: #fefdf8; /* Soft warm cream */
+  
+  --secondary-color: #d4a017; /* Warm Amber Gold */
+  --secondary-hover: #b08000;
+  
+  --accent-teal: #2e4a1e; /* Deep green */
+  --accent-cyan: #a5c890; /* Soft green */
+  
+  --text-dark: #0f172a;
+  --text-muted: #475569;
+  --text-light: #94a3b8;
+  
+  --bg-light: #f8fafc;
+  --bg-white: #ffffff;
+  
+  --border-radius-sm: 8px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 24px;
+  
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.03);
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 48px rgba(11, 26, 48, 0.08);
+  
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --font-family: 'Montserrat', sans-serif;
+}
+
+/* Base resets & typography */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings with premium weights */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  color: #1e293b;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+  border: 2px solid #f1f5f9;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-md);
+}
+
+.glass-panel-dark {
+  background: rgba(11, 26, 48, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes float-delayed {
+  0% { transform: translateY(-5px); }
+  50% { transform: translateY(5px); }
+  100% { transform: translateY(-5px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.03); opacity: 0.8; }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.gradient-text-teal {
+  background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Premium Navigation Link Effects */
+.nav-link {
+  color: var(--text-muted);
+  font-weight: 600;
+  transition: var(--transition-smooth);
+  position: relative;
+  font-size: 14.5px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -6px;
+  left: 50%;
+  background: linear-gradient(90deg, var(--secondary-color), var(--accent-cyan));
+  transition: var(--transition-smooth);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.nav-link:hover {
+  color: var(--secondary-color) !important;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link-active {
+  color: var(--secondary-color) !important;
+}
+
+.nav-link-active::after {
+  width: 100%;
+}
+
+/* Card Hover Interactions */
+.hover-card {
+  transition: var(--transition-smooth);
+}
+
+.hover-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* Glassy Stat Badge */
+.stat-badge {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* Styled Scroll Margin to prevent header overlaps */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Glassmorphic Spotlight Cards (Light Theme Premium) */
+.glass-card-spotlight {
+  background-color: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  color: var(--text-dark) !important;
+  border-radius: 24px !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.03), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.02) !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+.glass-card-spotlight:hover {
+  transform: translateY(-6px) translateZ(0) !important;
+  background-color: rgba(255, 255, 255, 0.65) !important;
+  border-color: rgba(0, 0, 0, 0.22) !important;
+  box-shadow: 
+    0 20px 45px -15px rgba(0, 0, 0, 0.12),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Boost glare visibility on light spotlight cards */
+.glass-card-spotlight.card-spotlight::before {
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.glass-card-spotlight.card-spotlight:hover::before {
+  opacity: 1.0 !important;
+}
+
+/* Glassmorphism Border Glow Panel */
+.glass-border-glow.border-glow-card {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 
+    0 10px 40px -10px rgba(0, 0, 0, 0.06), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+.glass-border-glow.border-glow-card:hover {
+  background-color: rgba(255, 255, 255, 0.52) !important;
+}
+
+/* BlurText Header styles */
+.section-title-blur-text {
+  font-size: clamp(2.2rem, 4vw, 2.5rem) !important;
+  font-weight: 500 !important;
+  color: #142a1f !important;
+  margin: 0 0 24px 0 !important;
+  line-height: 1.2 !important;
+  font-family: 'Playfair Display', serif !important;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section-title-blur-text.text-center {
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* ScrollReveal resetting for body copy */
+.scroll-reveal {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-weight: normal !important;
+  display: block !important;
+}
+
+.paragraph-scroll-reveal {
+  font-size: 16.5px !important;
+  color: var(--text-muted) !important;
+  line-height: 1.8 !important;
+  font-weight: 500 !important;
+  margin-bottom: 24px !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.paragraph-scroll-reveal-secondary {
+  font-size: 15px !important;
+  color: var(--text-muted) !important;
+  line-height: 1.75 !important;
+  margin-bottom: 32px !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.paragraph-scroll-reveal.text-center {
+  text-align: center !important;
+}
+
+/* Premium Amber Gold Title Highlight Style */
+.title-highlight {
+  background: linear-gradient(135deg, #b08000 0%, #d4a017 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #d4a017 !important; /* Fallback */
+  display: inline-block !important;
+  font-weight: inherit !important;
+}
+
+/* Force hardware accelerated GPU compositing for heavy animation & blur layers to fix scroll lag */
+.glass-card-spotlight,
+.glass-border-glow,
+.particles-container,
+.floating-lines-container,
+.light-rays-container,
+.ripple-grid-container,
+.hero-secondary-btn,
+.hero-primary-btn {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ==========================================
+   SAAS ENTERPRISE ERP DESIGN SYSTEM TOKENS
+   ========================================== */
+
+/* Layout & Backgrounds */
+/* Layout & Backgrounds with soft premium mesh gradient */
+.saas-layout {
+  background: radial-gradient(at 0% 0%, rgba(247, 254, 231, 1) 0px, transparent 50%),
+              radial-gradient(at 50% 0%, rgba(217, 249, 157, 0.4) 0px, transparent 50%),
+              radial-gradient(at 100% 0%, rgba(190, 242, 100, 0.5) 0px, transparent 50%),
+              radial-gradient(at 50% 100%, rgba(236, 252, 203, 0.5) 0px, transparent 50%),
+              #f8fafc !important;
+}
+
+.saas-content {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+/* Sidebar Glassmorphism Styling */
+.saas-sider {
+  background: #0f172a !important;
+  border-right: 1px solid #1e293b !important;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Ant Menu Light Theme custom overrides */
+.saas-menu.ant-menu {
+  background: transparent !important;
+  border-inline-end: none !important;
+  padding: 8px 12px !important;
+}
+
+.saas-menu.ant-menu .ant-menu-item {
+  border-radius: 12px !important;
+  margin: 6px 0 !important;
+  height: 42px !important;
+  line-height: 42px !important;
+  color: #e2e8f0 !important;
+  font-weight: 500 !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.saas-menu.ant-menu .ant-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+}
+
+.saas-menu.ant-menu .ant-menu-item-selected {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: #10b981 !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+  border-right: 3px solid #eab308 !important;
+  border-radius: 12px 0 0 12px !important;
+}
+
+.saas-menu.ant-menu .ant-menu-item-selected .ant-menu-item-icon {
+  color: #10b981 !important;
+}
+
+/* Header & Glassmorphism Navigation */
+.saas-header {
+  position: sticky !important;
+  top: 24px !important;
+  z-index: 1000 !important;
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(20px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(120%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  border-radius: 24px !important;
+  margin: 24px 24px 0 24px !important;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08) !important;
+  height: 64px !important;
+  padding: 0 24px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+@media (max-width: 991px) {
+  .saas-header {
+    top: 12px !important;
+    margin: 12px 12px 0 12px !important;
+    border-radius: 16px !important;
+    padding: 0 12px !important;
+  }
+}
+
+.saas-search-input {
+  background-color: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  color: #0f172a !important;
+  transition: all 0.2s ease !important;
+  max-width: 240px;
+}
+
+.saas-search-input:focus, .saas-search-input:hover {
+  background-color: #ffffff !important;
+  border-color: #2e4a1e !important;
+  box-shadow: 0 0 0 2px rgba(46, 74, 30, 0.1) !important;
+}
+
+/* Cards & Statistics - floating design system cards */
+.saas-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.saas-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Custom Table Overrides */
+.saas-table .ant-table {
+  background: transparent !important;
+}
+
+.saas-table .ant-table-thead > tr > th {
+  background: #f8fafc !important;
+  color: #475569 !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding: 12px 16px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.saas-table .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #f1f5f9 !important;
+  padding: 14px 16px !important;
+  color: #334155 !important;
+  font-size: 14px !important;
+}
+
+.saas-table .ant-table-tbody > tr:hover > td {
+  background: #f8fafc !important;
+}
+
+/* Reusable Buttons */
+.saas-btn-primary {
+  background: linear-gradient(135deg, #2e4a1e 0%, #1e3a1a 100%) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(46, 74, 30, 0.2) !important;
+  transition: all 0.2s ease !important;
+}
+
+.saas-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(46, 74, 30, 0.4), 0 0 10px rgba(234, 179, 8, 0.5) !important;
+  opacity: 0.95;
+}
+
+.saas-btn-secondary {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  color: #334155 !important;
+  transition: all 0.2s ease !important;
+}
+
+.saas-btn-secondary:hover {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* Form Inputs & Drawers */
+.saas-form-input {
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  color: #0f172a !important;
+  height: 42px !important;
+  font-size: 14px !important;
+  transition: all 0.2s ease !important;
+}
+
+.saas-form-input:focus, .saas-form-input:hover {
+  background-color: #ffffff !important;
+  border-color: #2e4a1e !important;
+  box-shadow: 0 0 0 2px rgba(46, 74, 30, 0.1) !important;
+}
+
+.saas-form-label label {
+  color: #475569 !important;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+}
+
+/* Pulsing Badge Element */
+.saas-pulse-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 50px;
+  padding: 4px 10px;
+}
+
+.saas-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.saas-pulse-dot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  animation: pulse-dot-key 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes pulse-dot-key {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3.5); opacity: 0; }
+}
+
+/* Antd Modal Backdrop blur and diffused shadow styling */
+.saas-modal-wrap .ant-modal-content {
+  border-radius: 20px !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  overflow: hidden;
+}
+
+.saas-modal-wrap .ant-modal-mask {
+  backdrop-filter: blur(8px) saturate(110%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(110%) !important;
+  background-color: rgba(15, 23, 42, 0.3) !important;
+}
+
+/* Hide scrollbars but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Premium Top Mask to prevent content scrolling bleed-through */
+.saas-top-mask {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 24px !important;
+  background: radial-gradient(at 0% 0%, rgba(243, 244, 246, 1) 0px, transparent 50%),
+              radial-gradient(at 50% 0%, rgba(219, 234, 254, 0.4) 0px, transparent 50%),
+              radial-gradient(at 100% 0%, rgba(224, 242, 254, 0.5) 0px, transparent 50%),
+              #f1f5f9 !important;
+  z-index: 1001 !important;
+  pointer-events: none !important;
+}
+
+@media (max-width: 991px) {
+  .saas-top-mask {
+    height: 12px !important;
+  }
+}
+
+/* Responsive Dashboard Layout & Widgets Rules */
+.saas-welcome-panel {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 24px !important;
+  background: linear-gradient(135deg, #2e4a1e 0%, #1e3a1a 100%) !important;
+  padding: 30px !important;
+  border-radius: 16px !important;
+  margin-bottom: 24px !important;
+  box-shadow: 0 10px 30px -10px rgba(46, 74, 30, 0.3) !important;
+}
+
+.saas-welcome-title {
+  font-family: 'Georgia', serif !important;
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.saas-welcome-desc {
+  color: #e2e8f0 !important;
+  font-size: 14.5px !important;
+  margin: 4px 0 0 0 !important;
+  font-weight: 500 !important;
+}
+
+.saas-quick-actions-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+
+.saas-quick-action-card {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 8px 16px !important;
+  width: 190px !important;
+  height: 48px !important;
+  border-radius: 12px !important;
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.saas-quick-action-card:hover {
+  transform: translateY(-1px) !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+}
+
+.saas-dashboard-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+}
+
+.saas-chart-bar-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 70px !important;
+}
+
+.saas-chart-bar-out, .saas-chart-bar-inp {
+  width: 12px !important;
+}
+
+@media (max-width: 991px) {
+  .saas-welcome-panel {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+  
+  .saas-welcome-title {
+    font-size: 24px !important;
+  }
+  
+  .saas-quick-actions-row {
+    width: 100% !important;
+    gap: 8px !important;
+  }
+  
+  .saas-quick-action-card {
+    width: auto !important;
+    flex: 1 1 130px !important;
+    min-width: 120px !important;
+    padding: 8px 12px !important;
+  }
+  
+  .saas-dashboard-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  .saas-chart-bar-wrapper {
+    width: 48px !important;
+  }
+  
+  .saas-chart-bar-out, .saas-chart-bar-inp {
+    width: 8px !important;
+  }
+  
+  .saas-chart-bar-container {
+    gap: 4px !important;
+  }
+}
+
+/* ==========================================================
+   GLOBAL MOBILE RESPONSIVENESS Ã¢â‚¬â€ Moolatvam Ayurved ERP
+   Breakpoints: 991px (tablet), 768px (mobile), 480px (small)
+   ========================================================== */
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ UNIVERSAL BASE FIXES Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* Safe responsive images Ã¢â‚¬â€ exclude fixed-size UI elements like logos */
+.public-content img,
+section img,
+.ant-card img,
+.landing-img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Logo images Ã¢â‚¬â€ locked size, never overridden by responsive rules */
+.saas-logo {
+  height: 36px !important;
+  width: auto !important;
+  max-width: none !important;
+  max-height: 36px !important;
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ NAVBAR Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  .top-bar {
+    height: auto !important;
+    padding: 8px 16px !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+  }
+  .hide-on-mobile {
+    display: none !important;
+  }
+  .hide-on-tablet {
+    display: none !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ LANDING PAGE Ã¢â‚¬â€ HERO SECTION Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 991px) {
+  #hero {
+    padding: 120px 5% 60px 5% !important;
+    min-height: auto !important;
+  }
+}
+@media (max-width: 768px) {
+  #hero {
+    padding: 100px 5% 50px 5% !important;
+    align-items: flex-start !important;
+  }
+  .hero-headline-title {
+    font-size: clamp(28px, 8vw, 40px) !important;
+  }
+}
+@media (max-width: 480px) {
+  #hero {
+    padding: 90px 4% 40px 4% !important;
+  }
+  .hero-headline-title {
+    font-size: 26px !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ LANDING PAGE Ã¢â‚¬â€ SECTIONS Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  #stats,
+  #about,
+  #services,
+  #departments,
+  #why-choose-us,
+  #doctors,
+  #testimonials,
+  #gallery,
+  #qr-appointment,
+  #contact,
+  #faq {
+    padding: 60px 4% !important;
+  }
+  
+  .section-title-blur-text {
+    font-size: clamp(22px, 6vw, 32px) !important;
+    margin-bottom: 16px !important;
+  }
+
+  .paragraph-scroll-reveal,
+  .paragraph-scroll-reveal-secondary {
+    font-size: 14px !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #stats,
+  #about,
+  #services,
+  #departments,
+  #why-choose-us,
+  #doctors,
+  #testimonials,
+  #gallery,
+  #qr-appointment,
+  #contact,
+  #faq {
+    padding: 48px 4% !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ ANT DESIGN ROW/COL MOBILE FIX Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  .ant-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .ant-col {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ DASHBOARD LAYOUT Ã¢â‚¬â€ HEADER Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 991px) {
+  .saas-header {
+    padding: 0 12px !important;
+    height: 56px !important;
+    border-radius: 14px !important;
+    margin: 12px 12px 0 12px !important;
+  }
+  .saas-header .ant-space {
+    gap: 8px !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ DASHBOARD LAYOUT Ã¢â‚¬â€ CONTENT Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 991px) {
+  /* Content area full width on mobile */
+  .ant-layout-content {
+    margin: 8px !important;
+    padding: 0 !important;
+  }
+  /* Prevent ant-layout-has-sider from shrinking content */
+  .ant-layout.ant-layout-has-sider {
+    flex-direction: column !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ ADMIN DASHBOARD Ã¢â‚¬â€ STATS STRIP Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  .saas-welcome-panel {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+  .saas-welcome-title {
+    font-size: 22px !important;
+  }
+  .saas-quick-actions-row {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    padding-bottom: 4px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .saas-quick-action-card {
+    flex-shrink: 0 !important;
+    width: 140px !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ ADMIN DASHBOARD Ã¢â‚¬â€ CARDS GRID Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 991px) {
+  .saas-dashboard-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ TABLES Ã¢â‚¬â€ HORIZONTAL SCROLL ON MOBILE Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  /* Make card containers that hold tables clip properly */
+  .ant-card:has(.ant-table-wrapper) {
+    overflow: hidden !important;
+  }
+  /* Table wrapper must scroll horizontally */
+  .ant-table-wrapper {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    max-width: 100% !important;
+  }
+  /* Remove forced min-width Ã¢â‚¬â€ let the Ant Design scroll prop handle it */
+  .saas-table .ant-table-thead > tr > th,
+  .saas-table .ant-table-tbody > tr > td {
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ MODALS Ã¢â‚¬â€ RESPONSIVE WIDTH Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  .ant-modal {
+    max-width: calc(100vw - 24px) !important;
+    margin: 12px auto !important;
+  }
+  .ant-modal-content {
+    padding: 16px !important;
+  }
+  .ant-descriptions-item-label,
+  .ant-descriptions-item-content {
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ DRAWERS Ã¢â‚¬â€ FULL WIDTH ON MOBILE Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  .ant-drawer-content-wrapper {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  .ant-drawer-body {
+    padding: 16px !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ FORMS Ã¢â‚¬â€ INPUTS/LABELS STACK Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  .ant-form-item-label {
+    padding-bottom: 4px !important;
+  }
+  .ant-input, .ant-input-affix-wrapper,
+  .ant-select-selector, .ant-picker {
+    font-size: 14px !important;
+  }
+  .saas-form-input {
+    height: 40px !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ BUTTONS Ã¢â‚¬â€ TOUCH TARGETS Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  .ant-btn {
+    min-height: 36px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ CARD COMPONENT Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  .ant-card-body {
+    padding: 16px !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ LOGIN PAGE Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  .login-branding-panel {
+    display: none !important;
+  }
+  .login-form-panel {
+    max-width: 100% !important;
+    padding: 32px 20px !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ LANDING CONTACT SECTION Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  #contact .ant-row {
+    flex-direction: column !important;
+  }
+  #contact .ant-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ LANDING DOCTORS / GALLERY GRID Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 600px) {
+  /* Force 1 column on very small screens for any 2-up grid */
+  .ant-col-xs-24 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ PAGE HEADER COMPONENT Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  .saas-page-header-title {
+    font-size: 20px !important;
+  }
+  .saas-page-header-subtitle {
+    font-size: 13px !important;
+  }
+  /* Search filter row stack */
+  .saas-search-filter-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .saas-search-filter-row .ant-input-affix-wrapper {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ NURSE / DOCTOR STAT CARDS Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 576px) {
+  .ant-statistic-title {
+    font-size: 12px !important;
+  }
+  .ant-statistic-content-value {
+    font-size: 24px !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ SPACE COMPONENT WRAPPING Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 480px) {
+  .ant-space-horizontal {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+}
+
+/* Ã¢â€â‚¬Ã¢â€â‚¬ PREVENT OVERFLOW FROM FIXED-WIDTH ELEMENTS Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
+@media (max-width: 768px) {
+  [style*="width: 190px"],
+  [style*="width: 320px"],
+  [style*="width: 280px"] {
+    max-width: 100% !important;
+  }
+}
+
+/* Custom Input Focus Outlines for Premium Ayurvedic Brand */
+.ant-input,
+.ant-select-selector,
+textarea.ant-input {
+  border-color: #e2e8f0 !important;
+}
+
+.ant-input:focus, 
+.ant-input-focused, 
+.ant-input:hover,
+.ant-select:not(.ant-select-disabled):hover .ant-select-selector,
+.ant-select-focused:not(.ant-select-disabled).ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  border-color: #2e4a1e !important;
+  box-shadow: 0 0 0 2px rgba(234, 179, 8, 0.25) !important;
+}
+
+/* Glassmorphic Patient Intake Form Container */
+.glassmorphic-intake-card {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(46, 74, 30, 0.12) !important;
+}
+
+.glassmorphic-intake-card > .ant-card-body,
+.glassmorphic-intake-card .ant-card-head {
+  background: transparent !important;
+}
+
+/* Force Transparent Backgrounds on Layouts for Animations */
+.patient-form-wrapper,
+.patient-form-wrapper .ant-layout,
+.patient-form-wrapper .ant-layout-content,
+#root > .ant-layout,
+#root > .ant-layout > .ant-layout-content {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Base style for absolutely positioned case paper fields */
+.cp-field {
+  position: absolute;
+  font-family: 'Georgia', serif;
+  font-size: 11.5pt;
+  color: #111;
+  word-break: break-word;
+}
+
+/* ========================================================
+   PRINT SPECIFIC RULES (Invoked from Case Paper Preview Modal)
+   ======================================================== */
+@media print {
+  /* Hide everything in the DOM except the modal root */
+  body > * {
+    display: none !important;
+  }
+  .ant-modal-root {
+    display: block !important;
+  }
+  /* Hide modal chrome (toolbar, overlay, mask) */
+  .ant-modal-mask,
+  .ant-modal-wrap,
+  .no-print {
+    display: none !important;
+  }
+  /* Force the canvas to be visible and fill A4 exactly */
+  .print-only.case-paper-canvas {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    background-size: 100% 100% !important;
+  }
+  /* Reset body */
+  body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  /* Preserve absolute field text */
+  .case-paper-canvas div {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+
+
+

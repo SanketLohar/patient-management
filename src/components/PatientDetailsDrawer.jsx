@@ -9,7 +9,7 @@ export default function PatientDetailsDrawer({
     <Drawer
       title="Patient Details"
       placement="right"
-      width={500}
+      size="large"
       open={open}
       onClose={onClose}
     >
