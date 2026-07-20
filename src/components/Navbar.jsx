@@ -80,6 +80,7 @@ export default function Navbar() {
 
       {/* Main Header / Navigation */}
       <header
+        className="navbar-header"
         style={{
           position: "sticky",
           top: 0,
@@ -279,6 +280,12 @@ export default function Navbar() {
             color: #d4a017;
           }
           @media (max-width: 1150px) {
+            .navbar-header {
+              display: flex !important;
+              justify-content: space-between !important;
+              align-items: center !important;
+              width: 100% !important;
+            }
             .desktop-nav {
               display: none !important;
             }
@@ -290,13 +297,17 @@ export default function Navbar() {
             .hide-on-mobile {
               display: none !important;
             }
+            .top-bar {
+              display: none !important;
+            }
+            .navbar-header {
+              height: 70px !important;
+              padding: 0 16px !important;
+            }
           }
           @media (max-width: 576px) {
             .hide-on-tablet {
               display: none !important;
-            }
-            .top-bar {
-              justify-content: center !important;
             }
           }
         `}</style>

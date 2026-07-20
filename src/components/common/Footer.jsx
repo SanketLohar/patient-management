@@ -52,9 +52,9 @@ export default function Footer() {
     <AntFooter style={footerStyle} id="contact">
       <Row gutter={[64, 64]} justify="center" style={{ maxWidth: "1200px", margin: "0 auto", width: "100%" }}>
         {/* Column 1: Brand Info */}
-        <Col xs={24} md={8}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "28px", cursor: "pointer" }} onClick={() => navigate("/")}>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+        <Col xs={24} md={8} className="footer-col-wrapper" style={{ display: "flex", flexDirection: "column" }}>
+          <div className="footer-logo-wrapper" style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "28px", cursor: "pointer" }} onClick={() => navigate("/")}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", justifyContent: "inherit" }}>
               <img
                 src={HOSPITAL_CONFIG.logo}
                 alt="Logo"
@@ -81,7 +81,7 @@ export default function Footer() {
         </Col>
 
         {/* Column 2: Company */}
-        <Col xs={24} sm={8} md={4}>
+        <Col xs={24} sm={8} md={4} className="footer-col-wrapper" style={{ display: "flex", flexDirection: "column" }}>
           <Title level={5} style={{ color: "#ffffff", fontFamily: "'Playfair Display', serif", textTransform: "uppercase", marginBottom: "32px", fontWeight: "700", fontSize: "18px", letterSpacing: "0.05em" }}>
             Company
           </Title>
@@ -93,7 +93,7 @@ export default function Footer() {
         </Col>
 
         {/* Column 3: Links */}
-        <Col xs={24} sm={8} md={4}>
+        <Col xs={24} sm={8} md={4} className="footer-col-wrapper" style={{ display: "flex", flexDirection: "column" }}>
           <Title level={5} style={{ color: "#ffffff", fontFamily: "'Playfair Display', serif", textTransform: "uppercase", marginBottom: "32px", fontWeight: "700", fontSize: "18px", letterSpacing: "0.05em" }}>
             Treatments
           </Title>
@@ -110,7 +110,7 @@ export default function Footer() {
         </Col>
 
         {/* Column 4: Newsletter & Social */}
-        <Col xs={24} sm={8} md={8}>
+        <Col xs={24} sm={8} md={8} className="footer-col-wrapper" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
           <Title level={5} style={{ color: "#ffffff", fontFamily: "'Playfair Display', serif", textTransform: "uppercase", marginBottom: "32px", fontWeight: "700", fontSize: "18px", letterSpacing: "0.05em" }}>
             Stay Updated
           </Title>
@@ -118,7 +118,7 @@ export default function Footer() {
             Subscribe to our newsletter for health tips and Ayurvedic insights.
           </Paragraph>
           
-          <div style={{ display: "flex", gap: "8px", marginBottom: "40px" }}>
+          <div className="newsletter-container" style={{ display: "flex", gap: "8px", marginBottom: "40px", width: "100%" }}>
             <Input 
               placeholder="Enter your email address" 
               style={{ 
@@ -144,7 +144,7 @@ export default function Footer() {
             </Button>
           </div>
 
-          <Space size="large">
+          <Space size="large" className="footer-socials">
             <a href={HOSPITAL_CONFIG.socials.facebook} target="_blank" rel="noopener noreferrer" className="social-icon-wrapper">
               <FacebookOutlined style={{ fontSize: "20px" }} />
             </a>
@@ -202,6 +202,27 @@ export default function Footer() {
           background-color: #d4a017;
           border-color: #d4a017;
           transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+          .footer-col-wrapper {
+            text-align: center !important;
+            align-items: center !important;
+          }
+          .newsletter-container {
+            flex-direction: column !important;
+            width: 100% !important;
+          }
+          .newsletter-container .ant-input, .newsletter-container .ant-btn {
+            width: 100% !important;
+            border-radius: 30px !important;
+          }
+          .footer-logo-wrapper {
+            justify-content: center !important;
+          }
+          .footer-socials {
+            justify-content: center !important;
+            width: 100% !important;
+          }
         }
       `}</style>
     </AntFooter>

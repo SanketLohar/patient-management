@@ -216,7 +216,7 @@ export default function Hero() {
               transition={{ delay: 0.75, duration: 0.8, ease: "easeOut" }}
               style={{ marginBottom: "56px" }}
             >
-              <Space size="large" wrap>
+              <Space size="large" wrap className="hero-action-space">
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Button
                     type="primary"
@@ -401,15 +401,31 @@ export default function Hero() {
         }
         @media (max-width: 768px) {
           #hero {
-            padding: 100px 5% 48px 5% !important;
+            padding-top: 120px !important;
+            padding-bottom: 48px !important;
+            padding-left: 24px !important;
+            padding-right: 24px !important;
           }
           .hero-headline-title {
             font-size: clamp(26px, 8vw, 38px) !important;
+          }
+          .hero-action-space {
+            display: flex !important;
+            flex-direction: column !important;
+            width: 100% !important;
+            gap: 12px !important;
+          }
+          .hero-action-space .ant-space-item {
+            width: 100% !important;
+          }
+          .hero-action-space .ant-space-item > div {
+            width: 100% !important;
           }
           .hero-primary-btn, .hero-secondary-btn {
             height: 48px !important;
             padding: 0 24px !important;
             font-size: 14px !important;
+            width: 100% !important;
           }
         }
         @media (max-width: 480px) {
